@@ -1,0 +1,38 @@
+
+1.项目的划分
+
+    1.1 component(通用组件文件夹) 存放整个项目需要重复调用的组件
+
+    1.2 routers(所有路由信息的文件夹) 存放整个项目中需要用到的路由配置信息，集成在一个文件夹下，便于统一管理
+
+    1.3 static(静态文件夹) 存放项目的css和一些通用的js逻辑和静态图片的文件夹
+
+    1.4 store(状态仓库管理文件夹)
+        1.4.1 reducer(纯函数 - 状态数据定义) 定义纯函数，用来存储状态数据的纯函数，文件夹内部可分为一一对应的数据状态文件夹
+        1.4.2 action(动作，用于触发修改 store 中对应的状态 ) 如果数据种类比较少，比如只有列表，详情比较稀少就可以定义到一个index文件下，如果多数据种类，最好还要是要一一对应，便于维护。
+    
+    1.5 views(页面视图存放的文件夹) 用来统一管理各个视图的js，不同的视图应当再次建立一个单独的文件夹，用来存放属于这个视图相关的组件
+
+    1.6 App.js (所有页面的入口组件) 在js文件下进行路由的 Route 的绑定 和总体页面框架的搭建
+
+    1.7 index.js (项目的总入口) 用来绑定总的store仓库、React.DOM渲染到index.html上、定义整一个项目路由的类型 是history 还是 哈希路由(#) 
+
+2.项目中用到的技术栈
+
+    2.1 React + antd + React-router + redux + React-redux + axios
+
+    2.2 Moment.js - Day.js (两个关于时间日期处理的js库)
+
+    2.3 qs 用来处理queryString参数的
+
+3.项目中用到的 hook
+
+    useHistory + useSelector + useLocation + useEffect + useParams + useDisPatch + 自定义的 hooks (具体请看action文件夹下的方法)
+
+4.总结：
+    学到了项目的从项目构建，文件分类到整体的完成，了解了路由的配置、通过路由表来映射所有的路由信息，路由类型的确定、如果利用react-redux + redux 更好的管理 store 状态。
+    通过具体的文件分类也明白了不同的处理之间应该怎么存放，怎么样才能最大的减少维护的成本，如果通过 hooks 去实现对 store 仓库的状态获取与action的触发(useSelector(state=>state.xxx) / useDispatch)
+    也知道了多个reducer函数应该如何统一的绑定到一个store仓库中 ( redux 中的 combineReducers)
+    路由的配置与信息的获取也不用是通过类组件下的高阶组件绑定而是使用(useLocation / useHistory / useParams ...)来直接进行路由信息的获取
+    也初步认识了组件化开发的思想，通过封装一个个通用的组件能够极大的减少开发时间。从而提高开发的效率
+        
